@@ -8,12 +8,12 @@
 ```
 # Dungeon Master's Campaign Manager
 
-A Gatsby theme for DMs to manage interactive map notes, list NPC info, store rule references, and keep track of monster/spell stats. It's a big binder of notes just for you.
+A Gatsby theme for DMs to manage interactive map notes, list NPC information, store rule references, and keep track of monster/spell stats. It's a big binder of notes, just for you.
 
 ## Description
 
-- Hover over batlle maps for a quick notes about what your players will find or click each room for your in-depth notes. No more scrambling to remember what happens in room 2 or the lich's dungeon.
-- Each campign has a table for your NPCs, so recalling what accent or job Glenda from Riverport had isn't cause for panic.
+- Hover over battle maps for a quick look at what your players will experience in each room or click to see your in-depth notes. No more scrambling to remember what happens in Room 2 of the Lich's Dread Dungeon.
+- Each campign has a table to list your NPCs, so recalling what accent or job Glenda from Riverport had isn't cause for panic.
 - Can't remember what the rules for a drowning character are? Want to know how to describe damage during combat? Can't remember how much horse shoes cost? It's all covered in your rules Reference.
 - Store all your monster stats and spell information in the Spellbook/Bestiary.
 - Clickable dice rolls for attacks/saves/checks.
