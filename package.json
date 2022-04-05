@@ -19,6 +19,7 @@
     "@mui/styles": "^5.5.3",
     "@mui/utils": "^5.5.3",
     "gatsby-plugin-image": "^2.11.1",
+    "gatsby-plugin-manifest": "^4.11.1",
     "gatsby-plugin-mdx": "^3.11.1",
     "gatsby-plugin-react-helmet": "^5.11.0",
     "gatsby-plugin-react-svg": "^3.1.0",

@@ -4,33 +4,18 @@ import {
 } from '@mui/material';
 import { Link } from 'gatsby-theme-material-ui';
 import { Helmet } from 'react-helmet';
-// import { useTheme } from '@mui/styles';
 import {
   SITE_NAME, SITE_SHORT_NAME, FOOTER_COPY,
 } from '../../utils/constants';
 import Navigation from '../Navigation/Navigation';
 import DmcmBlackBridgeIcon from '../../images/black-bridge.svg';
 
-// const dmcmTheme = () => useTheme();
 // eslint-disable-next-line react/function-component-definition
 const HeaderContainer = (props) => <Container component="header" {...props} />;
 
 function Layout({
   children, hideNavigation, title, navDirection,
 }) {
-//   console.log(`
-//      _____        ___          ___          ___     
-//     /  /::\\      /__/\\        /  /\\        /__/\\    
-//    /  /:/\\:\\    |  |::\\      /  /:/       |  |::\\   
-//   /  /:/  \\:\\   |  |:|:\\    /  /:/        |  |:|:\\  
-//  /__/:/ \\__\\:|__|__|:|\\:\\  /  /:/  ___  __|__|:|\\:\\ 
-//  \\  \\:\\ /  /:/__/::::| \\:\\/__/:/  /  /\\/__/::::| \\:\\
-//   \\  \\:\\  /:/\\  \\:\\~~\\__\\/\\  \\:\\ /  /:/\\  \\:\\~~\\__\\/
-//    \\  \\:\\/:/  \\  \\:\\       \\  \\:\\  /:/  \\  \\:\\      
-//     \\  \\::/    \\  \\:\\       \\  \\:\\/:/    \\  \\:\\     
-//      \\__\\/      \\  \\:\\       \\  \\::/      \\  \\:\\    
-//                  \\__\\/        \\__\\/        \\__\\/    
-// `);
   return (
     <>
       <Helmet defaultTitle="DMCM" title={`${title} | ${SITE_NAME}`} />
