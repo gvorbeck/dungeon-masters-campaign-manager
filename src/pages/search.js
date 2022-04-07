@@ -4,7 +4,6 @@ import {
   Autocomplete,
   Avatar,
   Box,
-  Button,
   ButtonGroup,
   Card,
   CardContent,
@@ -46,9 +45,6 @@ import * as CREATURE_TYPES from '../images/creature-types';
 import * as MAGIC_TYPES from '../images/magic-types';
 
 function SearchPage({ data, location }) {
-  // const [diceAmount, setDiceAmount] = React.useState(null);
-  // const [diceType, setDiceType] = React.useState(null);
-  // const [diceModifier, setDiceModifier] = React.useState(null);
   const search = new URLSearchParams(location.search.substring(1));
   const category = search.get('category');
   const searchData = {
@@ -299,44 +295,14 @@ function MonsterAbilityList({ abilities }) {
       {Object.keys(abilities).map((ability) => {
         const modifier = Math.floor((abilities[ability] - 10) / 2);
         return (
-          <Button
+          <Dice
             key={ability}
-            modifier={Math.floor((abilities[ability] - 10) / 2)}
-            sx={{
-              '& span': {
-                display: 'block',
-                lineHeight: 1,
-              },
-              display: 'flex !important',
-              flexDirection: 'column',
-              flex: '1 1 0',
-            }}
-          >
-            <Box
-              component="span"
-              sx={{
-                typography: 'h5',
-                fontWeight: 700,
-              }}
-            >
-              {abilities[ability]}
-            </Box>
-            <Box
-              sx={{
-                my: 0.5,
-                lineHeight: 1,
-              }}
-            >
-              {modifier > 0 ? `+${modifier}` : modifier}
-            </Box>
-            <Box
-              sx={{
-                fontWeight: 700,
-              }}
-            >
-              {ability}
-            </Box>
-          </Button>
+            r={`d20+${modifier}`}
+            variant="abilityButton"
+            ability={ability}
+            value={abilities[ability]}
+            modifier={modifier}
+          />
         );
       })}
     </ButtonGroup>

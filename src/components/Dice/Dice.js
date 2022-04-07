@@ -1,57 +1,58 @@
 import React from 'react';
-import { IconButton, Snackbar, Tooltip } from '@mui/material';
+import { Box, IconButton, Tooltip } from '@mui/material';
 import CasinoIcon from '@mui/icons-material/Casino';
-import CloseIcon from '@mui/icons-material/Close';
+import { useSnackbar } from 'notistack';
 import { DiceRoll } from '@dice-roller/rpg-dice-roller';
+import { Button } from 'gatsby-theme-material-ui';
 
-function Dice({ r }) {
-  const [open, setOpen] = React.useState(false);
-  const [results, setResults] = React.useState(null);
+function Dice({
+  r, variant, ability, value, modifier,
+}) {
+  const { enqueueSnackbar } = useSnackbar();
   const [log] = React.useState([]);
 
   const handleClick = () => {
     const roll = new DiceRoll(r);
     log.push(roll);
-    setResults(roll);
-    setOpen(true);
+    enqueueSnackbar(roll.output);
   };
 
-  const handleClose = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
-    setOpen(false);
-  };
-  const action = (
-    <IconButton
-      size="small"
-      aria-label="close"
-      color="inherit"
-      onClick={handleClose}
-    >
-      <CloseIcon fontSize="small" />
-    </IconButton>
-  );
+  if (variant) {
+    return (
+      <Button
+        onClick={handleClick}
+        sx={{
+          '& span': {
+            display: 'block',
+            lineHeight: 1,
+          },
+          display: 'flex !important',
+          flexDirection: 'column',
+          flex: '1 1 0',
+        }}
+      >
+        <Box
+          component="span"
+          sx={{ typography: 'h5', fontWeight: 700 }}
+        >
+          {value}
+        </Box>
+        <Box sx={{ my: 0.5, lineHeight: 1 }}>{modifier > 0 ? `+${modifier}` : modifier}</Box>
+        <Box sx={{ fontWeight: 700 }}>{ability}</Box>
+      </Button>
+    );
+  }
 
   return (
-    <>
-      <Tooltip title={r}>
-        <IconButton
-          edge="end"
-          aria-label="Roll Dice"
-          onClick={handleClick}
-        >
-          <CasinoIcon />
-        </IconButton>
-      </Tooltip>
-      <Snackbar
-        open={open}
-        autoHideDuration={6000}
-        onClose={handleClose}
-        message={results ? results.output : ''}
-        action={action}
-      />
-    </>
+    <Tooltip title={r}>
+      <IconButton
+        edge="end"
+        aria-label="Roll Dice"
+        onClick={handleClick}
+      >
+        <CasinoIcon />
+      </IconButton>
+    </Tooltip>
   );
 }
 
