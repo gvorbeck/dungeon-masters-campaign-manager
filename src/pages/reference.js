@@ -265,8 +265,10 @@ function ReferenceArticlesCategoryBlockItemDl(props) {
     //       <Box key={term.dt} sx={{ typography: 'body1' }}>
     //         <Typography variant="h5" component="dt">{term.dt}</Typography>
     //         <Box component="dd">
-    //           {term.dd.short && <Typography variant="subtitle1" component="p">{term.dd.short}</Typography>}
-    //           {term.dd.cite && <Typography variant="subtitle2" component="p">{term.dd.cite}</Typography>}
+    //           {term.dd.short &&
+    // <Typography variant="subtitle1" component="p">{term.dd.short}</Typography>}
+    //           {term.dd.cite &&
+    // <Typography variant="subtitle2" component="p">{term.dd.cite}</Typography>}
     //           {term.dd.text && (
     //             <MarkdownView
     //               markdown={term.dd.text}

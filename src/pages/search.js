@@ -1,14 +1,3 @@
-/*
-** ?? Custom Icon Rating for creature health bar? on monster result.
-** ?? FAB for search result page to return to seach bar. could appear when search bar is off screen?
-** ?? Monster result uses Avatar (mui) wrapped in Tooltip (mui) to get
-** species and info icons with hover.
-*/
-
-/*
-NO NEED FOR URL PARAMS?? USE TO.STATE??
-*/
-
 import React from 'react';
 import { graphql } from 'gatsby';
 import {
@@ -21,7 +10,6 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  IconButton,
   List,
   ListItem,
   ListItemIcon,
@@ -39,8 +27,8 @@ import {
   Typography,
 } from '@mui/material';
 import MarkdownView from 'react-showdown';
-import CasinoIcon from '@mui/icons-material/Casino';
 import Layout from '../components/Layout/Layout';
+import Dice from '../components/Dice/Dice';
 import {
   BESTIARY,
   SPELLBOOK,
@@ -58,6 +46,9 @@ import * as CREATURE_TYPES from '../images/creature-types';
 import * as MAGIC_TYPES from '../images/magic-types';
 
 function SearchPage({ data, location }) {
+  // const [diceAmount, setDiceAmount] = React.useState(null);
+  // const [diceType, setDiceType] = React.useState(null);
+  // const [diceModifier, setDiceModifier] = React.useState(null);
   const search = new URLSearchParams(location.search.substring(1));
   const category = search.get('category');
   const searchData = {
@@ -96,7 +87,6 @@ function SearchPage({ data, location }) {
     startingValue = result;
   }
   const [value, setValue] = React.useState(startingValue || []);
-
   return (
     <Layout title={searchTitle}>
       <Box>
@@ -355,21 +345,21 @@ function MonsterAbilityList({ abilities }) {
 
 function MonsterStats({
   ac,
-  hp,
-  speed,
-  saves,
-  skills,
-  dmgvulnerabilities,
-  dmgresistances,
-  dmgimmunities,
-  cdnimmunities,
-  senses,
-  languages,
-  challenge,
-  traits,
   actions,
-  reactions,
+  cdnimmunities,
+  challenge,
+  dmgimmunities,
+  dmgresistances,
+  dmgvulnerabilities,
+  hp,
+  languages,
   lgdyactions,
+  reactions,
+  saves,
+  senses,
+  skills,
+  speed,
+  traits,
 }) {
   const simpleStat = (stat) => {
     const listItems = [];
@@ -402,18 +392,25 @@ function MonsterStats({
           key={Math.random()}
           sx={{
             flex: '1 1 50%',
+            '& .dmcm-ListItemSecondaryAction-root': {
+              // 04/2022
+              // This is a hack. When Snackbar is placed inside ListItem's secondaryAction
+              // property (or as child element <ListItemSecondaryItem />), the Snackbar does
+              // not appear in the correct location.
+              // (https://github.com/mui/material-ui/issues/32152)
+              // Removing "transform" rule on .dmcm-ListItemSecondaryAction-root fixes.
+              transform: 'none',
+              // Compensating for the above rule.
+              // Should not hardcode this measurement.
+              // Ideal: transform: translateY(50%);
+              top: 'calc(50% - 20px)',
+            },
           }}
-          secondaryAction={index === 1 ? (
-            <Tooltip title="Roll Dice">
-              <IconButton edge="end" aria-label="Roll Dice">
-                <CasinoIcon />
-              </IconButton>
-            </Tooltip>
-          ) : ''}
+          secondaryAction={index === 1 && stat.notes && <Dice r={stat.notes} />}
         >
           <ListItemText
             primary={LIFE_STAT_NAMES[index]}
-            secondary={stat && (`${stat.value} ${stat.notes ? stat.notes : ''}`)}
+            secondary={stat && (`${stat.value} (${stat.notes ? stat.notes : ''})`)}
           />
         </ListItem>
       ))}
@@ -515,19 +512,6 @@ function MonsterStats({
 }
 
 function MonsterStatsTableRow({ cells, textTransform, button }) {
-  const rollButton = (
-    <Tooltip title="Roll Dice">
-      <IconButton
-        size="small"
-        aria-label="Roll Dice"
-        sx={{
-          ml: 1,
-        }}
-      >
-        <CasinoIcon />
-      </IconButton>
-    </Tooltip>
-  );
   return (
     <TableRow
       sx={{
@@ -544,7 +528,7 @@ function MonsterStatsTableRow({ cells, textTransform, button }) {
           }}
         >
           <Box component="span">{cell}</Box>
-          {(button && index > 0) ? rollButton : ''}
+          {(button && index > 0) ? <Dice r={`d20${cell}`} /> : ''}
         </TableCell>
       ))}
     </TableRow>
@@ -595,7 +579,19 @@ function SpellStats({
             ) : SPELL_STAT_ICONS[index]
             }
           </ListItemIcon>
-          <ListItemText primary={SPELL_STAT_NAMES[index]} secondary={stat} />
+          <ListItemText
+            primary={SPELL_STAT_NAMES[index]}
+            secondaryTypographyProps={{
+              component: 'div',
+              variant: 'body2',
+            }}
+            secondary={index === 5 ? (
+              <>
+                {stat}
+                <Dice r={stat} />
+              </>
+            ) : stat}
+          />
         </ListItem>
       ))}
     </List>

@@ -37,7 +37,6 @@ function Adventures({ content }) {
 }
 
 function Adventure({ content }) {
-  console.log(content);
   return (
     <Card
       raised

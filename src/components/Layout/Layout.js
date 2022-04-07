@@ -16,6 +16,9 @@ const HeaderContainer = (props) => <Container component="header" {...props} />;
 function Layout({
   children, hideNavigation, title, navDirection,
 }) {
+  // const [diceAmount, setDiceAmount] = React.useState(null);
+  // const [diceType, setDiceType] = React.useState(null);
+  // const [diceModifier, setDiceModifier] = React.useState(null);
   return (
     <>
       <Helmet defaultTitle="DMCM" title={`${title} | ${SITE_NAME}`} />
