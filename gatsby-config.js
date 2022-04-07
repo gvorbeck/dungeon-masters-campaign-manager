@@ -9,28 +9,28 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        icon: `${__dirname}/images/icon.png`,
+        icon: `${__dirname}/src/images/icon.png`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'content',
-        path: `${__dirname}/content/`,
+        path: `${__dirname}/src/content/`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'images',
-        path: `${__dirname}/images/`,
+        path: `${__dirname}/src/images/`,
       },
     },
     {
       resolve: 'gatsby-source-filesystem',
       options: {
         name: 'pages',
-        path: `${__dirname}/pages/`,
+        path: `${__dirname}/src/pages/`,
       },
     },
     {

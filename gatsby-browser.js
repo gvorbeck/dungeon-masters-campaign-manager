@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
 import { unstable_ClassNameGenerator as ClassNameGenerator } from '@mui/material/utils';
-import TopLayout from './components/TopLayout/TopLayout';
+import TopLayout from './src/components/TopLayout/TopLayout';
 
 ClassNameGenerator.configure((componentName) => componentName.replace('Mui', 'dmcm-'));
 

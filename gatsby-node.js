@@ -20,33 +20,31 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 /*
 ** PAGE TEMPLATES
 */
-const path = require('path');
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
 
-  const basePath = "/";
+  const basePath = '/';
   actions.createPage({
     path: basePath,
-    component: require.resolve("./pages/index.js"),
+    component: require.resolve('./src/pages/index.js'),
   });
 
-  const adventurePath = "/adventures/";
+  const adventurePath = '/adventures/';
   actions.createPage({
     path: adventurePath,
-    component: require.resolve("./pages/adventures.js"),
+    component: require.resolve('./src/pages/adventures.js'),
   });
 
-  const searchPath = "/search";
+  const searchPath = '/search/';
   actions.createPage({
     path: searchPath,
-    component: require.resolve("./pages/search.js"),
+    component: require.resolve('./src/pages/search.js'),
   });
 
-  const referencePath = "/reference";
+  const referencePath = '/reference/';
   actions.createPage({
     path: referencePath,
-    component: require.resolve("./pages/reference.js"),
+    component: require.resolve('./src/pages/reference.js'),
   });
 
   const result = await graphql(`
@@ -81,7 +79,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   adventures.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: require.resolve('./components/AdventurePageLayout/AdventurePageLayout.js'),
+      component: require.resolve('./src/components/AdventurePageLayout/AdventurePageLayout.js'),
       context: {
         id: node.id,
         locations: `${node.fields.slug}locations/`,
@@ -94,7 +92,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   locations.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
-      component: require.resolve('./components/LocationPageLayout/LocationPageLayout.js'),
+      component: require.resolve('./src/components/LocationPageLayout/LocationPageLayout.js'),
       context: {
         id: node.id,
       },
