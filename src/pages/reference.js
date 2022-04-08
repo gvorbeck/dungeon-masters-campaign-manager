@@ -145,11 +145,6 @@ function ReferenceArticlesCategoryBlock(props) {
             <ReferenceArticlesCategoryBlockItem key={item.post.node.id} item={item} />
           ))}
         </Masonry>
-        {/* <List disablePadding>
-          {categoryBlock.posts.map((item) => (
-            <ReferenceArticlesCategoryBlockItem key={item.post.node.id} item={item} />
-          ))}
-        </List> */}
       </Box>
     </ListItem>
   );
@@ -188,53 +183,6 @@ function ReferenceArticlesCategoryBlockItem(props) {
           })}
         </CardContent>
       </Card>
-      {/* <Box
-        component="article"
-        id={encodeURI(frontmatter.title).toLowerCase()}
-      >
-        <Paper
-          sx={{
-            px: 2,
-            py: 1,
-          }}
-        >
-          <Box component="header">
-            <Typography variant="subtitle2" component="h2">
-              {frontmatter.category}
-            </Typography>
-            <Typography variant="h4" component="h1">
-              {frontmatter.title}
-            </Typography>
-            <Divider />
-          </Box>
-          {frontmatter.content && (
-            <Box sx={{ typography: 'body1' }}>
-              {frontmatter.content.map((piece) => {
-                if (piece.type === 'dl') {
-                  return <ReferenceArticlesCategoryBlockItemDl key={piece.title} content={piece} />;
-                }
-                if (piece.type === 'table') {
-                  return (
-                    <ReferenceArticlesCategoryBlockItemTable
-                      key={piece.title}
-                      content={piece}
-                    />
-                  );
-                }
-                if (piece.type === 'markdown') {
-                  return (
-                    <ReferenceArticlesCategoryBlockItemMarkdown
-                      key={piece.title}
-                      content={piece}
-                    />
-                  );
-                }
-                return null;
-              })}
-            </Box>
-          )}
-        </Paper>
-      </Box> */}
     </Box>
   );
 }
@@ -259,28 +207,6 @@ function ReferenceArticlesCategoryBlockItemDl(props) {
         </ListItem>
       ))}
     </List>
-    // <Box>
-    //   <Box component="dl">
-    //     {content.terms.map((term) => (
-    //       <Box key={term.dt} sx={{ typography: 'body1' }}>
-    //         <Typography variant="h5" component="dt">{term.dt}</Typography>
-    //         <Box component="dd">
-    //           {term.dd.short &&
-    // <Typography variant="subtitle1" component="p">{term.dd.short}</Typography>}
-    //           {term.dd.cite &&
-    // <Typography variant="subtitle2" component="p">{term.dd.cite}</Typography>}
-    //           {term.dd.text && (
-    //             <MarkdownView
-    //               markdown={term.dd.text}
-    //               // components={}
-    //               options={{ tables: true }}
-    //             />
-    //           )}
-    //         </Box>
-    //       </Box>
-    //     ))}
-    //   </Box>
-    // </Box>
   );
 }
 function ReferenceArticlesCategoryBlockItemTable(props) {
