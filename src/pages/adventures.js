@@ -21,8 +21,7 @@ function Adventures({ content }) {
     <Box>
       <Paper
         sx={{
-          px: 2,
-          py: 2,
+          p: 2,
           display: 'flex',
           flexWrap: 'wrap',
           gap: 2,
