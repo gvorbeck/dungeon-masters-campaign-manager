@@ -1,6 +1,6 @@
 {
-  "name": "gatsby-theme-dmcm",
-  "version": "1.0.0",
+  "name": "@iamgarrett/gatsby-theme-dmcm",
+  "version": "0.2",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
