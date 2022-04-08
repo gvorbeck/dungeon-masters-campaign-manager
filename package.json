@@ -1,12 +1,12 @@
 {
   "name": "@iamgarrett/gatsby-theme-dmcm",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
     "gatsby": "^4.11.2",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "@dice-roller/rpg-dice-roller": "^5.1.0",
@@ -40,5 +40,11 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.29.4",
     "eslint-plugin-react-hooks": "^4.4.0"
-  }
+  },
+  "description": "Dungeon Master's Campaign Manager - Gatsby v4 Theme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": ""
 }
