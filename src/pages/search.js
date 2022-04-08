@@ -25,6 +25,7 @@ import {
   Tooltip,
   Typography,
 } from '@mui/material';
+import Masonry from '@mui/lab/Masonry';
 import MarkdownView from 'react-showdown';
 import Layout from '../components/Layout/Layout';
 import Dice from '../components/Dice/Dice';
@@ -143,19 +144,11 @@ function SearchResults({ value }) {
     >
       <Paper>
         {value.length > 0 && (
-          <List
-            disablePadding
-            sx={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: 2,
-              p: 2,
-            }}
-          >
+          <Masonry columns={2} spacing={2}>
             {value.map((item) => (
               <SearchResultsItem key={item.name} item={item} />
             ))}
-          </List>
+          </Masonry>
         )}
       </Paper>
     </Box>
@@ -164,17 +157,12 @@ function SearchResults({ value }) {
 
 function SearchResultsItem({ item }) {
   return (
-    <ListItem
-      sx={{
-        padding: 0,
-        display: 'block',
-      }}
-    >
+    <Box>
       <Card raised>
         <SearchResultsItemHeader item={item} />
         <SearchResultsItemContent item={item} />
       </Card>
-    </ListItem>
+    </Box>
   );
 }
 function SearchResultsItemHeader({ item }) {
@@ -554,7 +542,7 @@ function SpellStats({
             secondary={index === 5 ? (
               <>
                 {stat}
-                <Dice r={stat} />
+                {stat && stat.toLowerCase() !== 'none' && <Dice r={stat} />}
               </>
             ) : stat}
           />
