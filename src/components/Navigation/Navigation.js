@@ -1,44 +1,50 @@
 import React from 'react';
-import { Box, List, Stack } from '@mui/material';
+import { Box, List, ListItem } from '@mui/material';
 import { Button } from 'gatsby-theme-material-ui';
 import { NAVIGATION_DATA } from '../../utils/constants';
 
 function Navigation({
-  homeNav, hideNavigation, navDirection, variant, size,
+  homeNav, hideNavigation, variant, size,
 }) {
   return (
     <Box
       component="nav"
       sx={{
         display: hideNavigation && 'none',
+        py: !homeNav && 2,
       }}
     >
-      <Stack
-        component={List}
-        direction={navDirection || 'row'}
+      <List
+        disablePadding
         sx={{
-          py: 2,
-          justifyContent: 'flex-end',
+          display: !homeNav && 'flex',
+          justifyContent: !homeNav && 'flex-end',
         }}
       >
         {NAVIGATION_DATA.map((item) => (
-          <Button
-            size={size || 'medium'}
-            variant={variant || 'contained'}
+          <ListItem
+            disablePadding
             key={item.title}
-            to={item.slug}
-            color={homeNav ? 'primary' : 'secondary'}
             sx={{
               '& + &': {
-                marginTop: homeNav ? 2 : 0,
-                marginLeft: homeNav ? 0 : 2,
+                mt: homeNav ? 2 : 0,
+                ml: homeNav ? 0 : 2,
               },
+              width: homeNav ? '100%' : 'auto',
             }}
           >
-            {item.title}
-          </Button>
+            <Button
+              size={size || 'medium'}
+              variant={variant || 'contained'}
+              to={item.slug}
+              color={homeNav ? 'primary' : 'secondary'}
+              fullWidth
+            >
+              {item.title}
+            </Button>
+          </ListItem>
         ))}
-      </Stack>
+      </List>
     </Box>
   );
 }
