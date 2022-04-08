@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'Dungeon Master\'s Campaign Manager',
-    siteUrl: 'https://example.com',
+    siteUrl: 'https://github.com/gvorbeck/gatsby-theme-dmcm',
   },
   plugins: [
     'gatsby-plugin-image', 'gatsby-plugin-react-helmet', 'gatsby-plugin-mdx',
