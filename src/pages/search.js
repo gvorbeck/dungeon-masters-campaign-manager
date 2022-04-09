@@ -290,6 +290,7 @@ function MonsterAbilityList({ abilities }) {
             ability={ability}
             value={abilities[ability]}
             modifier={modifier}
+            disableText
           />
         );
       })}
@@ -360,7 +361,7 @@ function MonsterStats({
               top: 'calc(50% - 20px)',
             },
           }}
-          secondaryAction={index === 1 && stat.notes && <Dice r={stat.notes} />}
+          secondaryAction={index === 1 && stat.notes && <Dice disableText r={stat.notes} />}
         >
           <ListItemText
             primary={LIFE_STAT_NAMES[index]}
@@ -482,7 +483,7 @@ function MonsterStatsTableRow({ cells, textTransform, button }) {
           }}
         >
           <Box component="span">{cell}</Box>
-          {(button && index > 0) ? <Dice r={`d20${cell}`} /> : ''}
+          {(button && index > 0) ? <Dice disableText r={`d20${cell}`} /> : ''}
         </TableCell>
       ))}
     </TableRow>
@@ -542,7 +543,7 @@ function SpellStats({
             secondary={index === 5 ? (
               <>
                 {stat}
-                {stat && stat.toLowerCase() !== 'none' && <Dice r={stat} />}
+                {stat && stat.toLowerCase() !== 'none' && <Dice disableText r={stat} />}
               </>
             ) : stat}
           />
