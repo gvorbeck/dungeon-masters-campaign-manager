@@ -1,6 +1,6 @@
 {
   "name": "@iamgarrett/gatsby-theme-dmcm",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "index.js",
   "license": "MIT",
   "peerDependencies": {
@@ -43,8 +43,11 @@
   },
   "description": "Dungeon Master's Campaign Manager - Gatsby v4 Theme",
   "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": ""
+  "author": "iamgarrett"
 }
