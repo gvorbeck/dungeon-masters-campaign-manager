@@ -23,6 +23,7 @@ import MarkdownView from 'react-showdown';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import Masonry from '@mui/lab/Masonry';
 import Layout from '../components/Layout/Layout';
+import Dice from '../components/Dice/Dice';
 import { REFERENCE } from '../utils/constants';
 
 /* Table of Contents */
@@ -107,6 +108,7 @@ function TableOfContentsItemListLink(props) {
 }
 
 /* Reference Articles */
+const componentsList = { Dice, List, ListItem };
 function ReferenceArticles(props) {
   const { referenceData } = props;
   return (
@@ -126,8 +128,8 @@ function ReferenceArticles(props) {
   );
 }
 
-function ReferenceArticlesCategoryBlock(props) {
-  const { categoryBlock } = props;
+function ReferenceArticlesCategoryBlock({ categoryBlock }) {
+  console.log(categoryBlock);
   return (
     <ListItem
       disablePadding
@@ -139,6 +141,7 @@ function ReferenceArticlesCategoryBlock(props) {
         display: 'block',
       }}
     >
+      <Typography variant="h3">{categoryBlock.category}</Typography>
       <Box>
         <Masonry columns={2} spacing={2}>
           {categoryBlock.posts.map((item) => (
@@ -200,7 +203,7 @@ function ReferenceArticlesCategoryBlockItemDl(props) {
           {term.dd.text && (
             <MarkdownView
               markdown={term.dd.text}
-              // components={}
+              components={componentsList}
               options={{ tables: true }}
             />
           )}
@@ -228,7 +231,12 @@ function ReferenceArticlesCategoryBlockItemTable(props) {
               {content.rows.map((row) => (
                 <TableRow key={row}>
                   {row.length > 0 && row.map((cell) => (
-                    <TableCell key={cell}>{cell}</TableCell>
+                    <TableCell key={cell}>
+                      <MarkdownView
+                        components={componentsList}
+                        markdown={cell}
+                      />
+                    </TableCell>
                   ))}
                 </TableRow>
               ))}
@@ -245,7 +253,7 @@ function ReferenceArticlesCategoryBlockItemMarkdown(props) {
     <Box sx={{ typography: 'body1' }}>
       <MarkdownView
         key={content.text}
-        // components={}
+        components={componentsList}
         markdown={content.text}
       />
     </Box>
