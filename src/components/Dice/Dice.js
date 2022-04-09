@@ -6,7 +6,7 @@ import { DiceRoll } from '@dice-roller/rpg-dice-roller';
 import { Button } from 'gatsby-theme-material-ui';
 
 function Dice({
-  r, variant, ability, value, modifier,
+  r, variant, ability, value, modifier, disableText,
 }) {
   const { enqueueSnackbar } = useSnackbar();
   const [log] = React.useState([]);
@@ -44,14 +44,17 @@ function Dice({
   }
 
   return (
-    <Tooltip title={r}>
-      <IconButton
-        edge="end"
-        aria-label="Roll Dice"
-        onClick={handleClick}
-      >
-        <CasinoIcon />
-      </IconButton>
+    <Tooltip title={r} color="primary.main">
+      <>
+        {!disableText && r }
+        <IconButton
+          edge="end"
+          aria-label="Roll Dice"
+          onClick={handleClick}
+        >
+          <CasinoIcon />
+        </IconButton>
+      </>
     </Tooltip>
   );
 }
